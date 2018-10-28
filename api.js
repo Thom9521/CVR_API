@@ -35,6 +35,13 @@ function hentInfo(firmanavn, callback){
 
 }
 
+function komNu(){
+hentInfo("TDC", (resultat) => {
+    console.log(resultat)
+
+ });
+}
+
 function test(){
     console.log("Hej")
 }
