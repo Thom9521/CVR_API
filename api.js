@@ -1,7 +1,10 @@
+
 var http = require('http');
+
 module.exports = {
     hentInfo: hentInfo,
-    test: test
+    test: test,
+    komNu: komNu
 }
 
 function hentInfo(firmanavn, callback){
@@ -18,12 +21,10 @@ function hentInfo(firmanavn, callback){
     http.get(options, (resp) => {
         var data = '';
 
-        // A chunk of data has been recieved.
         resp.on('data', (chunk) => {
             data += chunk;
         });
 
-        // The whole response has been received. Print out the result.
         resp.on('end', () => {
             var virksomhedData = JSON.parse(data);
             callback(virksomhedData);
@@ -37,7 +38,8 @@ function hentInfo(firmanavn, callback){
 
 function komNu(){
 hentInfo("TDC", (resultat) => {
-    console.log(resultat)
+    //console.log(resultat)
+    document.getElementById("infoBoks").JSON = resultat;
 
  });
 }
